@@ -8,29 +8,29 @@ Generic::GenericTypeArray* Generic::_if<N, T>::Array()
 		(N > 0x10 && N <= 0x20) ? Generic::BigArr :
 		Generic::TooBigArr;
 }
-template<int N, int NN, typename __List>
-void Generic::Fill<N, NN, __List>::fill()
+template<int N, int UpperLimit, typename __List>
+void Generic::Fill<N, UpperLimit, __List>::fill()
 {
-	Generic::_if<NN, GenericTypeArray>::Array()[N] = malloc(sizeof(typename Generic::TypeAt<N, __List>::result));
-	*(typename Generic::TypeAt<N, __List>::result*)Generic::_if<NN, Generic::GenericTypeArray>::Array()[N] = 255;
-	Generic::Fill<N + 1, NN, __List>::fill();
+	Generic::_if<UpperLimit, GenericTypeArray>::Array()[N] = malloc(sizeof(typename Generic::TypeAt<N, __List>::result));
+	*(typename Generic::TypeAt<N, __List>::result*)Generic::_if<UpperLimit, Generic::GenericTypeArray>::Array()[N] = 255;
+	Generic::Fill<N + 1, UpperLimit, __List>::fill();
 }
-template<int NN, typename __List>
-void Generic::Fill < NN, NN, __List >::fill()
+template<int UpperLimit, typename __List>
+void Generic::Fill <UpperLimit, UpperLimit, __List>::fill()
 {
-	Generic::_if<NN, Generic::GenericTypeArray>::Array()[NN] = malloc(sizeof(typename Generic::TypeAt<NN, __List>::result));
-	*(typename Generic::TypeAt<NN, __List>::result*)Generic::_if<NN, Generic::GenericTypeArray>::Array()[NN] = 255;
+	Generic::_if<UpperLimit, Generic::GenericTypeArray>::Array()[UpperLimit] = malloc(sizeof(typename Generic::TypeAt<UpperLimit, __List>::result));
+	*(typename Generic::TypeAt<UpperLimit, __List>::result*)Generic::_if<UpperLimit, Generic::GenericTypeArray>::Array()[UpperLimit] = 255;
 }
-template<int N, int NN, typename __List>
-void Generic::Free<N, NN, __List>::freeIt()
+template<int N, int UpperLimit, typename __List>
+void Generic::Free<N, UpperLimit, __List>::freeIt()
 {
-	free(Generic::_if<NN, Generic::GenericTypeArray>::Array()[N]);
-	Generic::Free<N + 1, NN, __List>::freeIt();
+	free(Generic::_if<UpperLimit, Generic::GenericTypeArray>::Array()[N]);
+	Generic::Free<N + 1, UpperLimit, __List>::freeIt();
 }
-template<int NN, typename __List>
-void Generic::Free <NN, NN, __List>::freeIt()
+template<int UpperLimit, typename __List>
+void Generic::Free <UpperLimit, UpperLimit, __List>::freeIt()
 {
-	free(Generic::_if<NN, Generic::GenericTypeArray>::Array()[NN]);
+	free(Generic::_if<UpperLimit, Generic::GenericTypeArray>::Array()[UpperLimit]);
 }
 template<typename T, typename...U>
 void Generic::ListOfTypes<T, U...>::FillUp()
