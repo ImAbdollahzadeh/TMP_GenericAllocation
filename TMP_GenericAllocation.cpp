@@ -28,7 +28,7 @@ void Generic::Free<N, NN, __List>::freeIt()
 	Generic::Free<N + 1, NN, __List>::freeIt();
 }
 template<int NN, typename __List>
-void Generic::Free < NN, NN, __List >::freeIt()
+void Generic::Free <NN, NN, __List>::freeIt()
 {
 	free(Generic::_if<NN, Generic::GenericTypeArray>::Array()[NN]);
 }
