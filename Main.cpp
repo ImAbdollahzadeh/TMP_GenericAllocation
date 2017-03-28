@@ -1,5 +1,5 @@
 #include <iostream>
-#include "TMP_GenericAllocation"
+#include "TMP_GenericAllocation.h"
 int main()
 {
 	typedef Generic::ListOfTypes<int, double, char> list;
