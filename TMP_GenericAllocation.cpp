@@ -11,14 +11,16 @@ Generic::GenericTypeArray* Generic::_if<N, T>::Array()
 template<int N, int UpperLimit, typename __List>
 void Generic::Fill<N, UpperLimit, __List>::fill()
 {
-	Generic::_if<UpperLimit, GenericTypeArray>::Array()[N] = malloc(sizeof(typename Generic::TypeAt<N, __List>::result));
+	Generic::_if<UpperLimit, GenericTypeArray>::Array()[N] 
+		= malloc(sizeof(typename Generic::TypeAt<N, __List>::result));
 	*(typename Generic::TypeAt<N, __List>::result*)Generic::_if<UpperLimit, Generic::GenericTypeArray>::Array()[N] = 255;
 	Generic::Fill<N + 1, UpperLimit, __List>::fill();
 }
 template<int UpperLimit, typename __List>
 void Generic::Fill <UpperLimit, UpperLimit, __List>::fill()
 {
-	Generic::_if<UpperLimit, Generic::GenericTypeArray>::Array()[UpperLimit] = malloc(sizeof(typename Generic::TypeAt<UpperLimit, __List>::result));
+	Generic::_if<UpperLimit, Generic::GenericTypeArray>::Array()[UpperLimit] 
+		= malloc(sizeof(typename Generic::TypeAt<UpperLimit, __List>::result));
 	*(typename Generic::TypeAt<UpperLimit, __List>::result*)Generic::_if<UpperLimit, Generic::GenericTypeArray>::Array()[UpperLimit] = 255;
 }
 template<int N, int UpperLimit, typename __List>
