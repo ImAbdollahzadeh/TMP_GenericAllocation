@@ -37,20 +37,20 @@ namespace Generic
 		typedef typename __List::head result;
 	};
 
-	template<int N, int NN, typename __List> struct Fill
+	template<int N, int UpperLimit, typename __List> struct Fill
 	{
 		static void fill();
 	};
-	template<int NN, typename __List> struct Fill <NN, NN, __List>
+	template<int UpperLimit, typename __List> struct Fill <UpperLimit, UpperLimit, __List>
 	{
 		static void fill();
 	};
 
-	template<int N, int NN, typename __List> struct Free
+	template<int N, int UpperLimit, typename __List> struct Free
 	{
 		static void freeIt();
 	};
-	template<int NN, typename __List> struct Free <NN, NN, __List>
+	template<int UpperLimit, typename __List> struct Free <UpperLimit, UpperLimit, __List>
 	{
 		static void freeIt();
 	};
